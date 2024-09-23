@@ -15,7 +15,7 @@ export default async function criarTarefa({
     title: "Carregando",
     description: textoCarregando,
     status: "loading",
-    duration: 2000,
+    duration: 1000,
     isClosable: true,
     position: "top-left",
   });

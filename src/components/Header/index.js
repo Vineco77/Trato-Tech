@@ -1,30 +1,30 @@
 import styles from "./Header.module.scss";
-import TitleWithImage from "./TitleWithImage";
-import TitleWithoutImage from "./TitleWithoutImage";
+import TituloComImagem from "./TituloComImagem";
+import TituloSemImagem from "./TituloSemImagem";
 
 export default function Header({
-  title,
-  description,
+  titulo,
+  descricao,
   className = "",
-  image,
+  imagem,
   children,
 }) {
   return (
     <header className={styles.header}>
-      {title && !image && (
-        <TitleWithoutImage title={title} description={description}>
+      {titulo && !imagem && (
+        <TituloSemImagem titulo={titulo} descricao={descricao}>
           {children}
-        </TitleWithoutImage>
+        </TituloSemImagem>
       )}
-      {title && image && (
-        <TitleWithImage
-          title={title}
-          description={description}
-          image={image}
+      {titulo && imagem && (
+        <TituloComImagem
+          titulo={titulo}
+          descricao={descricao}
+          imagem={imagem}
           className={className}
         >
           {children}
-        </TitleWithImage>
+        </TituloComImagem>
       )}
     </header>
   );

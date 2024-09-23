@@ -5,19 +5,19 @@
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.08));
   flex-direction: column;
   width: 335px;
-  &-delete {
+  &-deletar {
     position: absolute;
     right: -10px;
     top: -10px;
   }
-  &-description {
+  &-descricao {
     background-color: #eff9ff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
   }
-  &-title {
+  &-titulo {
     padding: 16px 16px 0 16px;
     h2 {
       color: #1875e8;
@@ -28,12 +28,11 @@
     }
   }
 
-  &-image {
+  &-imagem {
     height: 160px;
     margin: 0 auto;
-    width: 335px;
     overflow: hidden;
-
+    width: 335px;
     img {
       width: 100%;
     }
@@ -44,7 +43,7 @@
     justify-content: space-between;
   }
 
-  &-price {
+  &-preco {
     align-items: center;
     background-color: #1875e8;
     color: white;
@@ -54,14 +53,14 @@
     justify-content: center;
     width: 170px;
   }
-  &-actions {
+  &-acoes {
     align-items: center;
     display: flex;
     flex: 1;
     justify-content: space-evenly;
   }
 
-  &-action {
+  &-acao {
     align-items: center;
     background-color: transparent;
     border: none;
@@ -72,12 +71,12 @@
   }
 }
 
-.itemInTheCart {
+.itemNoCarrinho {
   align-items: center;
   width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
-  .amount {
+  .quantidade {
     align-items: center;
     display: flex;
     gap: 10px;
@@ -86,7 +85,7 @@
       cursor: pointer;
     }
   }
-  .item-action {
+  .item-acoes {
     gap: 50px;
     justify-content: flex-end;
     padding: 0 50px;

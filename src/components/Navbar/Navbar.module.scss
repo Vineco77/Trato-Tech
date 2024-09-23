@@ -4,7 +4,7 @@
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
-  grid-template-areas: "logo links search icons";
+  grid-template-areas: "logo links busca icones";
   height: 100px;
   padding: 0 120px;
   position: absolute;
@@ -13,8 +13,8 @@
   @media (max-width: $tablet) {
     grid-template-areas:
       "logo logo"
-      "links icons"
-      "search search";
+      "links icones"
+      "busca busca";
     grid-template-columns: 6fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     height: 200px;
@@ -26,8 +26,8 @@
 }
 
 .logo {
-  grid-area: logo;
   cursor: pointer;
+  grid-area: logo;
 }
 
 .links {
@@ -45,10 +45,10 @@
   font-size: 22px;
 }
 
-.search {
+.busca {
   align-items: center;
   display: flex;
-  grid-area: search;
+  grid-area: busca;
   width: 100%;
 }
 
@@ -57,9 +57,9 @@
   text-decoration: underline;
 }
 
-.icons {
+.icones {
   display: flex;
   gap: 20px;
-  grid-area: icons;
+  grid-area: icones;
   margin-left: 30px;
 }

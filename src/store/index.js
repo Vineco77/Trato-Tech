@@ -1,34 +1,34 @@
 import { configureStore } from "@reduxjs/toolkit";
-import categoriesSlice from "./reducers/categories";
-import itemsSlice from "./reducers/items";
-import cartSlice from "./reducers/cart";
-import searchSlices from "./reducers/search";
-import { categoriesListener } from "./middlewares/categories";
-import { itemsListenar } from "./middlewares/items";
+import categoriasSlice from "./reducers/categorias";
+import itensSlice from "./reducers/itens";
+import carrinhoSlice from "./reducers/carrinho";
+import buscaSlice from "./reducers/busca";
+import { categoriasListener } from "./middlewares/categorias";
+import { itensListener } from "./middlewares/itens";
 import createSagaMiddleware from "redux-saga";
-import { categoriesSaga } from "./sagas/categories";
-import { cartSaga } from "./sagas/cart";
-import userSlice from "./reducers/user";
+import { categoriasSaga } from "./sagas/categorias";
+import { carrinhoSaga } from "./sagas/carrinho";
+import usuarioSlice from "./reducers/usuario";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: {
-    categories: categoriesSlice,
-    items: itemsSlice,
-    cart: cartSlice,
-    search: searchSlices,
-    user: userSlice,
+    categorias: categoriasSlice,
+    itens: itensSlice,
+    carrinho: carrinhoSlice,
+    busca: buscaSlice,
+    usuario: usuarioSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().prepend(
-      categoriesListener.middleware,
-      itemsListenar.middleware,
+      categoriasListener.middleware,
+      itensListener.middleware,
       sagaMiddleware
     ),
 });
 
-sagaMiddleware.run(categoriesSaga);
-sagaMiddleware.run(cartSaga);
+sagaMiddleware.run(categoriasSaga);
+sagaMiddleware.run(carrinhoSaga);
 
 export default store;

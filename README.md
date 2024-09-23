@@ -1,31 +1,40 @@
-# Secret Santa 🎅
+# Trato Tech 🎮
 
-Play Secret Santa in a dynamic and secure way, as the portal was developed using TDD.
+Tech e-commerce for buying and selling products, offering everything you need in one place.
 
 #### Feel free to explore, and if you have any questions, I'm available 24/7 for you 🫵
 
 <div>
-    <img src='./public/Img/sorteadorDeAmigos.gif'/>
+    <img src=''/>
 </div>
 
 #### Link to the Website 🎯
 
 <div>
-    <a href="https://sorteador-de-amigo-secreto-theta.vercel.app" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white" target="_blank"></a>
+    <a href="" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white" target="_blank"></a>
 </div>
 
-#### Funcionalidades da plataforma 🖥️
+#### Platform Features 🖥️
 
-Apresentar categorias de itens de forma específica;
-Conseguir adicionar os itens como favoritos;
-Adicionar múltiplos itens no carrinho;
-Conseguir alterar o nome do item;
-Possibilidade de excluir um item;
-Acesso à página de carrinho, contendo todos os itens adicionador e seu Subtotal em R$;
-Pode aumentar ou diminuir a quantidade de cada item;
-Conseguir anunciar um item, tanto na página home, quando de forma direcionada em cada categoria;
-Anunciar o nome, descrição, imagem, categoria e preço do produto;
-Notificação de Status da pagina;
+- Pleasant layout with organized items by category;
+
+- Ability to list new products in any category;
+
+- Search input to locate items within specific categories;
+
+- All screens are notified when items are successfully loaded;
+
+- Items are loaded only once, improving site performance;
+
+- Option to delete, favorite, and edit specific products;
+
+- All products added to the cart are separated on the cart screen;
+
+- Cart screen provides a subtotal, with the option to increase or decrease item quantities;
+
+- Payment screen shows the registered user's payment method from the API, with tax calculated based on the selected card;
+
+- Notification if the purchase is successful or if the balance is insufficient.
 
 #### ⬇️You can reach me at⬇️
 
@@ -120,3 +129,19 @@ Carregar dados de acordo com a necessidade da página;
 Buscar os itens com query strings;
 Criar mais de um listener middleware;
 Adicionar mais de um middleware dentro do configureStore;
+O que são versõe Major, Minor e Patch;
+Como instalar o Redux Saga;
+Como funciona a arquitetura Saga;
+O que são function generators e como utilizá-las;
+Como configurar o Redux Saga em um projeto com Redux Toolkit;
+O que são Watchers e Workers no Redux Saga;
+Como utilizar funções do Saga como call, put e delay;
+Como capturar e cancelar tarefas;
+Como executar múltiplos sagas (watchers);
+Como criar actions fora do Redux Toolkit e utilizá-las para executar o Saga;
+Fazer multiplas chamadas call em um único worker para construir dados de diferentes micro serviços e/ou endpoints;
+O all ajuda a fazer múltiplas chamadas e a rodar múltiplos watcher de uma vez só;
+Extrair informações de páginas para o Redux para serem waproveitados;
+Conseguimos ver na tela as informações recebidas via Redux Saga e salvas dentro do Redux;
+Fizemos o cálculo das taxas dos cartões baseadas no usuário logado e no cartão selecionado;
+Desabilitamos o botão de finalizar sem que a condição que queremos seja atendida e finalizamos o pagamento após selecionar o cartão e o saldo ser suficiente;

@@ -9,65 +9,62 @@ import {
   AiFillCloseCircle,
 } from "react-icons/ai";
 import { FaCartPlus } from "react-icons/fa";
+import { deletarItem, mudarFavorito, mudarItem } from "store/reducers/itens";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleCart, changeAmount } from "store/reducers/cart";
-import { changeItem, toggleFavorite, deleteItem } from "store/reducers/items";
+import { mudarCarrinho, mudarQuantidade } from "store/reducers/carrinho";
 import classNames from "classnames";
 import { memo, useState } from "react";
 import Input from "components/Input";
 
-const propsIcon = {
+const iconeProps = {
   size: 24,
   color: "#041833",
 };
 
-const amountProps = {
+const quantidadeProps = {
   size: 32,
   color: "#1875E8",
 };
 
-function Items(props) {
-  const { title, image, price, description, favorite, id, cart, amount } =
+function Item(props) {
+  const { titulo, foto, preco, descricao, favorito, id, carrinho, quantidade } =
     props;
-
-  const [editMode, setEditMode] = useState(false);
-  const [newTitle, setNewTitle] = useState(title);
-
+  const [modoDeEdicao, setModoDeEdicao] = useState(false);
+  const [novoTitulo, setNovoTitulo] = useState(titulo);
   const dispatch = useDispatch();
-
-  const isInTheCart = useSelector((state) =>
-    state.cart.data?.some((itemInTheCart) => itemInTheCart.id === id)
+  const estaNoCarrinho = useSelector((state) =>
+    state.carrinho.data?.some((itemNoCarrinho) => itemNoCarrinho.id === id)
   );
 
-  function manageFavorite() {
-    dispatch(toggleFavorite(id));
+  function resolverFavorito() {
+    dispatch(mudarFavorito(id));
   }
 
-  function manageCart() {
-    dispatch(toggleCart(id));
+  function resolverCarrinho() {
+    dispatch(mudarCarrinho(id));
   }
 
-  const editModeComponent = (
+  const componenteModoDeEdicao = (
     <>
-      {editMode ? (
+      {modoDeEdicao ? (
         <AiOutlineCheck
-          {...propsIcon}
-          className={styles["item-action"]}
+          {...iconeProps}
+          className={styles["item-acao"]}
           onClick={() => {
-            setEditMode(false);
+            setModoDeEdicao(false);
             dispatch(
-              changeItem({
+              mudarItem({
                 id,
-                item: { title: newTitle },
+                item: { titulo: novoTitulo },
               })
             );
           }}
         />
       ) : (
         <AiFillEdit
-          {...propsIcon}
-          className={styles["item-action"]}
-          onClick={() => setEditMode(true)}
+          {...iconeProps}
+          className={styles["item-acao"]}
+          onClick={() => setModoDeEdicao(true)}
         />
       )}
     </>
@@ -76,72 +73,74 @@ function Items(props) {
   return (
     <div
       className={classNames(styles.item, {
-        [styles.itemInTheCart]: cart,
+        [styles.itemNoCarrinho]: carrinho,
       })}
     >
       <AiFillCloseCircle
-        onClick={() => dispatch(deleteItem(id))}
-        {...propsIcon}
-        className={`${styles["item-action"]} ${styles["item-delete"]}`}
+        {...iconeProps}
+        className={`${styles["item-acao"]} ${styles["item-deletar"]}`}
+        onClick={() => dispatch(deletarItem(id))}
       />
-      <div className={styles["item-image"]}>
-        <img src={image} alt={title} />
+      <div className={styles["item-imagem"]}>
+        <img src={foto} alt={titulo} />
       </div>
-      <div className={styles["item-description"]}>
-        <div className={styles["item-title"]}>
-          {editMode ? (
+      <div className={styles["item-descricao"]}>
+        <div className={styles["item-titulo"]}>
+          {modoDeEdicao ? (
             <Input
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
+              value={novoTitulo}
+              onChange={(evento) => setNovoTitulo(evento.target.value)}
             />
           ) : (
-            <h2>{title}</h2>
+            <h2>{titulo}</h2>
           )}
-          <p>{description}</p>
+          <p>{descricao}</p>
         </div>
         <div className={styles["item-info"]}>
-          <div className={styles["item-price"]}>R$ {price.toFixed(2)}</div>
-          <div className={styles["item-actions"]}>
-            {favorite ? (
+          <div className={styles["item-preco"]}>R$ {preco.toFixed(2)}</div>
+          <div className={styles["item-acoes"]}>
+            {favorito ? (
               <AiFillHeart
-                {...propsIcon}
+                {...iconeProps}
                 color="#ff0000"
-                className={styles["item-action"]}
-                onClick={manageFavorite}
+                className={styles["item-acao"]}
+                onClick={resolverFavorito}
               />
             ) : (
               <AiOutlineHeart
-                {...propsIcon}
-                className={styles["item-action"]}
-                onClick={manageFavorite}
+                {...iconeProps}
+                className={styles["item-acao"]}
+                onClick={resolverFavorito}
               />
             )}
-            {cart ? (
-              <div className={styles.amount}>
+            {carrinho ? (
+              <div className={styles.quantidade}>
                 Quantidade:
                 <AiFillMinusCircle
-                  {...amountProps}
+                  {...quantidadeProps}
                   onClick={() => {
-                    if (amount >= 1) {
-                      dispatch(changeAmount({ id, amount: -1 }));
+                    if (quantidade >= 1) {
+                      dispatch(mudarQuantidade({ id, quantidade: -1 }));
                     }
                   }}
                 />
-                <span>{String(amount || 0).padStart(2, "0")}</span>
+                <span>{String(quantidade || 0).padStart(2, "0")}</span>
                 <AiFillPlusCircle
-                  {...amountProps}
-                  onClick={() => dispatch(changeAmount({ id, amount: +1 }))}
+                  {...quantidadeProps}
+                  onClick={() =>
+                    dispatch(mudarQuantidade({ id, quantidade: +1 }))
+                  }
                 />
               </div>
             ) : (
               <>
                 <FaCartPlus
-                  {...propsIcon}
-                  color={isInTheCart ? "#1875E8" : propsIcon.color}
-                  className={styles["item-action"]}
-                  onClick={manageCart}
+                  {...iconeProps}
+                  color={estaNoCarrinho ? "#1875E8" : iconeProps.color}
+                  className={styles["item-acao"]}
+                  onClick={resolverCarrinho}
                 />
-                {editModeComponent}
+                {componenteModoDeEdicao}
               </>
             )}
           </div>
@@ -151,4 +150,4 @@ function Items(props) {
   );
 }
 
-export default memo(Items);
+export default memo(Item);

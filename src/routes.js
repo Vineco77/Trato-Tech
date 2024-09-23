@@ -1,22 +1,22 @@
-import DefaultPage from "components/DefaultPage";
-import Advertise from "pages/Advertise";
-import Cart from "pages/Cart";
-import Category from "pages/Category";
+import PaginaPadrao from "components/PaginaPadrao";
+import Anuncie from "pages/Anuncie";
+import Carrinho from "pages/Carrinho";
+import Categoria from "pages/Categoria";
 import Home from "pages/Home";
-import Payment from "pages/Payment";
+import Pagamento from "pages/Pagamento";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<DefaultPage />}>
+        <Route path="/" element={<PaginaPadrao />}>
           <Route index element={<Home />} />
-          <Route path="/category/:categoryName" element={<Category />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="advertise/:categoryName" element={<Advertise />} />
-          <Route path="advertise" element={<Advertise />} />
-          <Route path="payment" element={<Payment />} />
+          <Route path="/categoria/:nomeCategoria" element={<Categoria />} />
+          <Route path="carrinho" element={<Carrinho />} />
+          <Route path="anuncie/:nomeCategoria" element={<Anuncie />} />
+          <Route path="anuncie" element={<Anuncie />} />
+          <Route path="pagamento" element={<Pagamento />} />
         </Route>
       </Routes>
     </BrowserRouter>

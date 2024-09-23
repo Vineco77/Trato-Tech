@@ -2,7 +2,7 @@ import styles from "./Navbar.module.scss";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import classNames from "classnames";
 import { RiShoppingCart2Line, RiShoppingCartFill } from "react-icons/ri";
-import Search from "components/Search";
+import Busca from "../Busca";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const iconeProps = {
@@ -28,12 +28,12 @@ export default function Navbar() {
           </Link>
         </div>
       </div>
-      <div className={styles.search}>
-        <Search />
+      <div className={styles.busca}>
+        <Busca />
       </div>
-      <div className={styles.icons}>
-        <Link to="/cart">
-          {location.pathname === "/cart" ? (
+      <div className={styles.icones}>
+        <Link to="/carrinho">
+          {location.pathname === "/carrinho" ? (
             <RiShoppingCartFill {...iconeProps} />
           ) : (
             <RiShoppingCart2Line {...iconeProps} />

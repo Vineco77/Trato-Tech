@@ -36,7 +36,7 @@ function Items(props) {
   const dispatch = useDispatch();
 
   const isInTheCart = useSelector((state) =>
-    state.cart.some((itemInTheCart) => itemInTheCart.id === id)
+    state.cart.data?.some((itemInTheCart) => itemInTheCart.id === id)
   );
 
   function manageFavorite() {
